@@ -2,9 +2,12 @@ import express, { type Application } from "express";
 import cors from "cors";
 import compression from "compression";
 import helmet from "helmet";
+import { config } from "dotenv";
 import { connectDB } from "./config/database";
 import imageRoutes from "./routes/image.route";
-process.loadEnvFile();
+
+// Load environment variables (only loads .env if it exists)
+config();
 
 const app: Application = express();
 const PORT = process.env.PORT || 3000;
